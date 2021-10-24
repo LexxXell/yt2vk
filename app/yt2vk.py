@@ -16,7 +16,10 @@ def get_last_video(channel_id: str = None):
     soup = get_source_bs(
         f'https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}')
 
-    video = soup.find_all("entry")[1]
+    video = soup.find_all("entry")[1] if len(soup.find_all("entry")) > 1 else False
+
+    if not video:
+        return False, False, False
 
     title = video.find_all("title")[0].text
     link = video.find_all("link")[0]["href"]
@@ -44,5 +47,5 @@ if __name__ == "__main__":
         access_token=vk_access_token,
         owner_id=vk_group_id,
         attachments=link
-    )
+    ) if title and link and published else "Error"
     print(respronse)

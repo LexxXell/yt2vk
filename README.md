@@ -1,4 +1,4 @@
-**YT2VK (TouTube to VKontakte)**
+**YT2VK (YouTube to VKontakte)**
 
 Установить в кронтаб расписание запуска 
 ```
